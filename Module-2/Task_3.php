@@ -9,9 +9,11 @@ function fibonacci($n)
         $next = $first + $second;
         $first = $second;
         $second = $next;
+        if ($next > 100)
+            break;
     }
 }
 
-fibonacci(15);
+fibonacci(10);
 
 ?>
