@@ -1,27 +1,31 @@
 <?php
+// Function to remove duplicate characters from a string
+function removeDuplicates($str) {
+    $result = '';
+    $seen = array();
 
-function generatePassword($length) {
-    $lowercase = 'abcdefghijklmnopqrstuvwxyz';
-    $uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $numbers = '0123456789';
-    $specialChars = '!@#$%^&*()_+';
+    // Loop through each character in the string
+    for ($i = 0; $i < strlen($str); $i++) {
+        $char = $str[$i];
 
-    $characters = $lowercase . $uppercase . $numbers . $specialChars;
-    
-    $password = '';
-
-    for ($i = 0; $i < $length; $i++) {
-        $randomIndex = rand(0, strlen($characters) - 1);
-        $password .= $characters[$randomIndex];
+        // If the character has not been seen before, add it to the result
+        if (!isset($seen[$char])) {
+            $result .= $char;
+            $seen[$char] = true;
+        }
     }
-    
-    return $password;
+
+    return $result;
 }
 
-$passwordLength = 12;
-$generatedPassword = generatePassword($passwordLength);
+// Input string
+$inputString = readline("Enter a string: ");
 
-echo "Generated Password: " . $generatedPassword . "\n";
+// Call the function to remove duplicates
+$resultString = removeDuplicates($inputString);
 
+// Print the result
+echo "String without duplicates: " . $resultString . "\n";
+?>
 
 ?>
